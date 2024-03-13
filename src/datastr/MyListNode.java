@@ -1,12 +1,6 @@
 package datastr;
 
 public class MyListNode<T> {
-    // TODO:
-    //  1. variables - element, next un previous
-    //  2. get and set
-    //  3. constructors
-    //  4. toString
-
     private T element;
     private MyListNode<T> next = null;
     private MyListNode<T> previous = null;
