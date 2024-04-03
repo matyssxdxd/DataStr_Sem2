@@ -3,7 +3,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/
-seminars_3.iml
+DataStr_Sem2_2024.iml
 
 ### Eclipse ###
 .apt_generated
