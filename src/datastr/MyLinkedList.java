@@ -101,20 +101,20 @@ public class MyLinkedList<Ttype> {
 				temp = temp.getNext();
 			}
 
-			MyListNode rightNode = temp;
 			MyListNode leftNode = temp.getPrevious();
 
-			leftNode.setNext(rightNode.getNext());
+			leftNode.setNext(temp.getNext());
 			counter--;
 			System.gc();
 		}
 	}
 
-	public ArrayList<Integer> find(Ttype element) throws Exception {
+	public ArrayList<Integer> search(Ttype element) throws Exception {
+		if (isEmpty()) throw new Exception("There are no elements in list");
 		if (element == null) throw new Exception("Problems with element");
 
-		MyListNode temp = first;
 		ArrayList<Integer> result = new ArrayList<>();
+		MyListNode temp = first;
 
 		for (int i = 0; i < counter; i++) {
 			if (temp.getElement() == element) {
@@ -126,6 +126,27 @@ public class MyLinkedList<Ttype> {
 		if (result.isEmpty()) throw new Exception("There is no " + element + " in list");
 
 		return result;
+	}
+
+	public void makeEmpty() throws Exception {
+		if (isEmpty()) throw new Exception("List is already empty");
+		first = null;
+		last = null;
+		counter = 0;
+		System.gc();
+	}
+
+	public Ttype get(int pos) throws Exception {
+		if (isEmpty()) throw new Exception("There are no elements in list");
+		if (pos >= counter || pos < 0) throw new Exception("Problems with pos");
+
+		MyListNode temp = first;
+
+		for (int i = 0; i < pos; i++) {
+			temp = temp.getNext();
+		}
+
+		return (Ttype) temp.getElement();
 	}
 	
 	public void print() throws Exception
