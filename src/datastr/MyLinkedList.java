@@ -40,8 +40,41 @@ public class MyLinkedList<Ttype> {
 			last = newNode;
 			counter++;
 		}
-		
-		
+	}
+
+	public void add(Ttype element, int pos) throws Exception {
+		if (element == null) throw new Exception("Problems with element");
+		if (pos > counter || pos < 0) throw new Exception("Problems with pos");
+
+		if (isEmpty() && pos == 0) {
+            add(element);
+		} else if (isEmpty() && pos != 0)  {
+			throw new Exception("Problems with pos");
+		} else if (pos == 0) {
+			MyListNode newNode = new MyListNode<>(element);
+			newNode.setNext(first);
+			first.setPrevious(newNode);
+			first = newNode;
+			counter++;
+		} else if (pos == counter) {
+			add(element);
+		} else {
+			MyListNode temp = first;
+			for (int i = 0; i < pos; i++) {
+				temp = temp.getNext();
+			}
+			MyListNode rightNode = temp;
+			MyListNode leftNode = temp.getPrevious();
+			MyListNode newNode = new MyListNode(element);
+
+			newNode.setNext(rightNode);
+			rightNode.setPrevious(newNode);
+			newNode.setPrevious(leftNode);
+			leftNode.setNext(newNode);
+
+			counter++;
+
+		}
 	}
 	
 	

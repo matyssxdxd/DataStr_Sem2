@@ -10,6 +10,7 @@ public class MainService {
 			myList.add(23);
 			myList.add(100);
 			myList.add(-5);
+			myList.add(10, 2);
 			myList.print();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
